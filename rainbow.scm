@@ -1,0 +1,27 @@
+; put in gimp scripts directory and call it like this
+; gimp -i -b '(call_py_rainbow "image.gif" cycles)' -b '(gimp-quit 0)'
+; cycles is how many times you want to cycle through colours (for long gifs)
+; gifs must be unoptomized. To unoptomize gifs in gimp, use filters>animation>unoptimize
+; I just found out it only works if the gif is not already RGB
+(define (call_py_rainbow filename loops)
+  (let* ((image (car (gimp-file-load RUN-NONINTERACTIVE filename filename)))
+     (rawlayers (gimp-image-get-layers image))
+     (nlayers (car rawlayers))
+     (layers (cadr rawlayers))
+     (drawable (car (gimp-image-get-active-layer image)))
+     (i 0))
+        (gimp-image-convert-rgb image)
+        (while (< i nlayers)
+            (gimp-image-set-active-layer image (aref layers i))
+            (plug-in-alienmap2 RUN-NONINTERACTIVE image (car (gimp-image-get-active-layer image))
+                               1.2 (/ (* i 360 loops) nlayers)
+                               1.2 (+ (/ (* i 360 loops) nlayers) 180)
+                               1.2 (- 360 (/ (* i 360 loops) nlayers))
+                               0 TRUE TRUE TRUE)
+            (set! i (+ i 1))
+        )
+        (gimp-image-convert-indexed image 0 0 255 FALSE FALSE "palette")
+        (file-gif-save RUN-NONINTERACTIVE image drawable filename filename 0 1 50 0)
+        (gimp-image-delete image)
+  )
+)
