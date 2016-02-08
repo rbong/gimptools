@@ -36,7 +36,7 @@ register(
     "Roger Bongers",
     "2016",
     "Rainbowfy...",
-    "*",      # Alternately use RGB, RGB*, GRAY*, INDEXED etc.
+    "*",
     [
         (PF_IMAGE, "image", "The image to modify", None),
         (PF_STRING, "filename", "The filename of a copy to make.", ""),

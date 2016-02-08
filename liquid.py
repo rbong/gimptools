@@ -30,6 +30,9 @@ def liquify (image, filename, percent, nrg_func):
         pdb.file_gif_save (image, drawable, filename, filename, 0, 1, 50, 0)
         pdb.gimp_image_delete (image)
 
+    if image:
+        pdb.gimp_image_set_active_layer (image, drawable)
+
 register(
     "liquify",
     "Liquify",
