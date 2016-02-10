@@ -1,9 +1,7 @@
 gimptools
 =========
 
-In the future, this will have multiple scripts I have found useful to write for
-gimp. For now, it features one; a tool that can cycle throught the alien colour
-filter to create pulsating colour images.
+Plugins I have found useful to write for gimp.
 
 usage
 =====
@@ -14,13 +12,21 @@ Move the .py files to your ~/.gimp\*/plug-ins/ directory, then invoke them with
 gimp -i -b '(command args)' -b '(gimp-quit 0)'
 ```
 
-Or call them inside of gimp. An example is shown in rainbow.sh.
+Or call them inside of gimp.
 
-examples
+plug-ins
 ========
 
-## rainbowfy.py
+## rainbow.py
 
-Rainbowfy is found inside of Filters/Animation
+Cycles colors on a gif.
+
+Rainbowfy is found inside of Filters/Animation.
 
 ![rainbow.scm](https://raw.githubusercontent.com/rbong/gimptools/master/examples/tree.gif)
+
+## liquid.py
+
+Uses liquid rescale incrementally on a gif.
+
+Liquify is found inside of Filters/Animation.
