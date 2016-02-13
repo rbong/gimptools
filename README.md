@@ -30,3 +30,10 @@ Rainbowfy is found inside of Filters/Animation.
 Uses liquid rescale incrementally on a gif.
 
 Liquify is found inside of Filters/Animation.
+
+## preview.py
+
+Previews a gif inside gimp. Follows the delay of each frame or defaults to a
+given delay, which can be forced. Optionally ignores hidden frames.
+
+Preview is found inside of Filters/Animation.
