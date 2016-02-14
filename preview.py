@@ -22,7 +22,7 @@ def preview (image, delay, loops, force_delay, ignore_hidden, restore_hide):
         name = pdb.gimp_item_get_name (active_layer)
         l = None
         if not force_delay:
-            l = re.search ("\([0-9]+ms\)$", name)
+            l = re.search ("\([0-9]+ms\)", name)
             if l:
                 l = tuple (map (sum, zip (l.span (), tuple ([+1, -3]))))
                 l = name [slice (*l)]
