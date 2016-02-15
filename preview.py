@@ -42,8 +42,17 @@ def preview (image, delay, loops, force_delay, ignore_hidden, restore_hide):
                 pdb.gimp_item_set_visible (active_layer, 1)
                 pdb.gimp_displays_flush ()
                 time.sleep (length [i])
-                pdb.gimp_item_set_visible (active_layer, 0)
         j += 1
+
+        # unhides everything for optimized
+        if j < loops:
+            while i < nlayers:
+                if (not ignore_hidden) or visible [i]:
+                    pdb.gimp_item_set_visible (layers [i], 0)
+                i += 1
+
+        else:
+            i = nlayers
 
         i = nlayers
 
