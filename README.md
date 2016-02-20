@@ -37,3 +37,9 @@ Previews a gif inside gimp. Follows the delay of each frame or defaults to a
 given delay, which can be forced. Optionally ignores hidden frames.
 
 Preview is found inside of Filters/Animation.
+
+## jump.py
+
+Jumps to layer by number or name.
+
+Jump by Name and Jump by Number are both found inside of the Layer/ menu
