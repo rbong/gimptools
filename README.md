@@ -43,3 +43,9 @@ Preview is found inside of Filters/Animation.
 Jumps to layer by number or name.
 
 Jump by Name and Jump by Number are both found inside of the Layer/ menu
+
+## dup\_all.py
+
+Duplicate all the layers in an image a certain number of times.
+
+Duplicate all Layers is found inside of the Layer/ menu.
