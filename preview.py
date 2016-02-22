@@ -7,19 +7,16 @@ import re
 def preview (image, delay, loops, force_delay, ignore_hidden, restore_hide):
     if not image:
         raise "No image given."
-    backup_active_layer = pdb.gimp_image_get_active_layer (image)
     layers = image.layers
     nlayers = len (layers)
     visible = []
     length = []
     i = 0
     while i < nlayers:
-        pdb.gimp_image_set_active_layer (image, layers [i])
-        active_layer = pdb.gimp_image_get_active_layer (image)
-        visible += [pdb.gimp_item_get_visible (active_layer)]
+        visible += [pdb.gimp_item_get_visible (layers [i])]
         if visible [i]:
-            pdb.gimp_item_set_visible (active_layer, False)
-        name = pdb.gimp_item_get_name (active_layer)
+            pdb.gimp_item_set_visible (layers [i], False)
+        name = pdb.gimp_item_get_name (layers [i])
         l = None
         if not force_delay:
             l = re.search ("\([0-9]+ms\)", name)
@@ -37,9 +34,7 @@ def preview (image, delay, loops, force_delay, ignore_hidden, restore_hide):
         while i > 0:
             i -= 1
             if (not ignore_hidden) or visible [i]:
-                pdb.gimp_image_set_active_layer (image, layers [i])
-                active_layer = pdb.gimp_image_get_active_layer (image)
-                pdb.gimp_item_set_visible (active_layer, 1)
+                pdb.gimp_item_set_visible (layers [i], 1)
                 pdb.gimp_displays_flush ()
                 time.sleep (length [i])
         j += 1
@@ -61,13 +56,7 @@ def preview (image, delay, loops, force_delay, ignore_hidden, restore_hide):
         while i > 0:
             i -= 1
             if visible [i]:
-                pdb.gimp_image_set_active_layer (image, layers [i])
-                active_layer = pdb.gimp_image_get_active_layer (image)
-                pdb.gimp_item_set_visible (active_layer, 1)
-
                 pdb.gimp_item_set_visible (layers [i], 1)
-
-    pdb.gimp_image_set_active_layer (image, backup_active_layer)
 
 register(
     "preview",

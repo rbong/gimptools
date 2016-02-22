@@ -14,20 +14,15 @@ def duplicate_all_layers (image, filename, copies):
     i = nlayers
     while i > 0:
         i -= 1
-        pdb.gimp_image_set_active_layer (image, layers [i])
-        active_layer = pdb.gimp_image_get_active_layer (image)
         j = 0
         while j < copies:
-            new_layer = pdb.gimp_layer_copy (active_layer, 1)
+            new_layer = pdb.gimp_layer_copy (layers [i], 1)
             pdb.gimp_image_insert_layer (image, new_layer, None, i)
             j += 1
 
     if filename:
         pdb.gimp_image_convert_indexed (image, 0, 0, 255, False, False, "palette")
         pdb.file_gif_save (image, drawable, filename, filename, 0, 1, 50, 0)
-        pdb.gimp_image_delete (image)
-    if image:
-        pdb.gimp_image_set_active_layer (image, drawable)
 
 register(
     "duplicate_all_layers",

@@ -11,12 +11,10 @@ def rainbowfy (image, filename, loops, frequency):
     pdb.gimp_image_convert_rgb (image)
     i = 0
     while i < nlayers:
-        pdb.gimp_image_set_active_layer (image, layers [i])
-        active_layer = pdb.gimp_image_get_active_layer (image)
         r_angle = (i * 360 * loops)/nlayers
         g_angle = r_angle + 180
         b_angle = 360 - r_angle
-        pdb.plug_in_alienmap2 (image, active_layer,
+        pdb.plug_in_alienmap2 (image, layers [i],
                                frequency, r_angle,
                                frequency, g_angle,
                                frequency, b_angle,
