@@ -8,7 +8,8 @@ def rainbowfy (image, filename, loops, frequency):
     layers = image.layers
     nlayers = len (layers)
     drawable = pdb.gimp_image_get_active_layer (image)
-    pdb.gimp_image_convert_rgb (image)
+    if pdb.gimp_image_base_type (image) != 0:
+        pdb.gimp_image_convert_rgb (image)
     i = 0
     while i < nlayers:
         r_angle = (i * 360 * loops)/nlayers
