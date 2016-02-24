@@ -2,11 +2,11 @@
 
 from gimpfu import *
 
-def liquify (image, filename, percent, nrg_func):
-    if filename and not image:
+def liquify (image, percent, nrg_func):
+    filename=None
+    if type (image) == type (str ()):
+        filename=image
         image = pdb.gimp_file_load (filename, filename)
-    if not image and not filename:
-        raise "No image given."
 
     layers = image.layers
     nlayers = len (layers)
@@ -25,7 +25,6 @@ def liquify (image, filename, percent, nrg_func):
         i += 1
 
     if filename:
-        pdb.gimp_image_convert_indexed (image, 0, 0, 255, False, False, "palette")
         pdb.file_gif_save (image, drawable, filename, filename, 0, 1, 50, 0)
 
 register(
@@ -39,11 +38,28 @@ register(
     "*",
     [
         (PF_IMAGE, "image", "The image to modify", None),
-        (PF_STRING, "filename", "The filename of a copy to make", ""),
         (PF_FLOAT, "percent", "The percent to scale the animation to", 0.01),
         (PF_INT32, "nrg_func", "The energy function to use", 0),
     ],
     [],
     liquify, menu="<Image>/Filters/Animation")
+
+register(
+    "batch-liquify",
+    "",
+    "",
+    "Roger Bongers",
+    "Roger Bongers",
+    "2016",
+    "",
+    "*",
+    [
+        (PF_STRING, "image", "The image to modify", None),
+        (PF_STRING, "filename", "The filename of a copy to make", ""),
+        (PF_FLOAT, "percent", "The percent to scale the animation to", 0.01),
+        (PF_INT32, "nrg_func", "The energy function to use", 0),
+    ],
+    [],
+    liquify)
 
 main()

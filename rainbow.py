@@ -2,9 +2,12 @@
 
 from gimpfu import *
 
-def rainbowfy (image, filename, loops, frequency):
-    if filename and not image:
+def rainbowfy (image, loops, frequency):
+    filename=None
+    if type (image) == type (str ()):
+        filename=image
         image = pdb.gimp_file_load (filename, filename)
+
     layers = image.layers
     nlayers = len (layers)
     drawable = pdb.gimp_image_get_active_layer (image)
@@ -23,9 +26,7 @@ def rainbowfy (image, filename, loops, frequency):
         i += 1
 
     if filename:
-        pdb.gimp_image_convert_indexed (image, 0, 0, 255, False, False, "palette")
         pdb.file_gif_save (image, drawable, filename, filename, 0, 1, 50, 0)
-        pdb.gimp_image_delete (image)
 
 register(
     "rainbowfy",
@@ -38,11 +39,27 @@ register(
     "*",
     [
         (PF_IMAGE, "image", "The image to modify", None),
-        (PF_STRING, "filename", "The filename of a copy to make.", ""),
         (PF_INT, "loops", "Number of times to cycle the color palette", 1),
         (PF_FLOAT, "frequency", "The color frequency", 1.2),
     ],
     [],
     rainbowfy, menu="<Image>/Filters/Animation")
+
+register(
+    "batch-rainbowfy",
+    "",
+    "",
+    "Roger Bongers",
+    "Roger Bongers",
+    "2016",
+    "",
+    "*",
+    [
+        (PF_STRING, "image", "The image to modify", None),
+        (PF_INT, "loops", "Number of times to cycle the color palette", 1),
+        (PF_FLOAT, "frequency", "The color frequency", 1.2),
+    ],
+    [],
+    rainbowfy)
 
 main()
