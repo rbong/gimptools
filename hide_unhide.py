@@ -11,6 +11,15 @@ def hide_all_layers (image):
         i += 1
     pdb.gimp_displays_flush ()
 
+def unhide_all_layers (image):
+    layers = image.layers
+    nlayers = len (layers)
+    i = 0
+    while i < nlayers:
+        pdb.gimp_item_set_visible (layers [i], 1)
+        i += 1
+    pdb.gimp_displays_flush ()
+
 register(
     "hide_all_layers",
     "hide_all_layers",
@@ -26,4 +35,19 @@ register(
     [],
     hide_all_layers, menu="<Image>/Layer")
 
-main()
+register(
+    "unhide_all_layers",
+    "unhide_all_layers",
+    "Unhide all layers",
+    "Roger Bongers",
+    "Roger Bongers",
+    "2016",
+    "Unhide all Layers",
+    "*",
+    [
+        (PF_IMAGE, "image", "The image to modify", None),
+    ],
+    [],
+    unhide_all_layers, menu="<Image>/Layer")
+
+main ()
