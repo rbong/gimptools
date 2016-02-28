@@ -2,23 +2,21 @@
 
 from gimpfu import *
 
-def hide_all_layers (image):
+
+def hide_unhide (image, mode):
     layers = image.layers
     nlayers = len (layers)
     i = 0
     while i < nlayers:
-        pdb.gimp_item_set_visible (layers [i], 0)
+        pdb.gimp_item_set_visible (layers [i], mode)
         i += 1
     pdb.gimp_displays_flush ()
 
+def hide_all_layers (image):
+    hide_unhide (image, 0)
+
 def unhide_all_layers (image):
-    layers = image.layers
-    nlayers = len (layers)
-    i = 0
-    while i < nlayers:
-        pdb.gimp_item_set_visible (layers [i], 1)
-        i += 1
-    pdb.gimp_displays_flush ()
+    hide_unhide (image, 1)
 
 register(
     "hide_all_layers",
