@@ -55,7 +55,6 @@ register(
     "*",
     [
         (PF_STRING, "image", "The image to modify", None),
-        (PF_STRING, "filename", "The filename of a copy to make", ""),
         (PF_FLOAT, "percent", "The percent to scale the animation to", 0.01),
         (PF_INT32, "nrg_func", "The energy function to use", 0),
     ],
