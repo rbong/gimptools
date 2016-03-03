@@ -25,6 +25,7 @@ def liquify (image, percent, nrg_func):
         i += 1
 
     if filename:
+        pdb.gimp_image_convert_indexed (image, 0, 0, 255, FALSE, FALSE, "palette")
         pdb.file_gif_save (image, drawable, filename, filename, 0, 1, 50, 0)
 
 register(
