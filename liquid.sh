@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 filename=$1
 percent=$2
 nrg_func=$3

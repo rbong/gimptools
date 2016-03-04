@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 filename=$1
 loops=$2
 frequency=$3
