@@ -1,32 +1,19 @@
 #!/usr/bin/env python
 
 from gimpfu import *
+from scale import *
 
-def liquify (image, percent, nrg_func):
-    filename=None
-    if type (image) == type (str ()):
-        filename=image
-        image = pdb.gimp_file_load (filename, filename)
+def lqr (image, layer, w, h, nrg_func):
+    pdb.plug_in_lqr (image, layer, w, h, -1, -1, -1, -1, 0, -1, 1, 150, 1, 1,
+            0, 0, nrg_func, 0, 0, 1, 1, 1, "", "", "", "")
 
-    layers = image.layers
-    nlayers = len (layers)
-    drawable = pdb.gimp_image_get_active_layer (image)
-    if pdb.gimp_image_base_type (image) != 0:
-        pdb.gimp_image_convert_rgb (image)
-    width = pdb.gimp_image_width (image)
-    height = pdb.gimp_image_height (image)
-    i = 0
-    while i < nlayers:
-        w = int (width * (1.0 + (percent - 1) * (1 - i / float (nlayers))))
-        h = int (height * (1.0 + (percent - 1) * (1 - i / float (nlayers))))
-        pdb.plug_in_lqr (image, layers [i], w, h,
-                         -1, -1, -1, -1, 0, -1, 1, 150, 1, 1, 0, 0,
-                         nrg_func, 0, 0, 1, 1, 1, "", "", "", "")
-        i += 1
-
-    if filename:
-        pdb.gimp_image_convert_indexed (image, 0, 0, 255, FALSE, FALSE, "palette")
-        pdb.file_gif_save (image, drawable, filename, filename, 0, 1, 50, 0)
+def liquify (img, percent, nrg_func):
+    f = lambda i, l, w, h: lqr (i, l, w, h, nrg_func)
+    _img = get_image (img) [0]
+    w = pdb.gimp_image_width (_img)
+    h = pdb.gimp_image_height (_img)
+    _img = None
+    scale (img, f, (w * percent, w, round), (h * percent, h, round))
 
 register(
     "liquify",

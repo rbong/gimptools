@@ -1,32 +1,15 @@
 #!/usr/bin/env python
 
 from gimpfu import *
+from scale import *
 
-def rainbowfy (image, loops, frequency):
-    filename=None
-    if type (image) == type (str ()):
-        filename=image
-        image = pdb.gimp_file_load (filename, filename)
+def alien (img, layer, red, green, blue, freq):
+    pdb.plug_in_alienmap2 (
+        img, layer, freq, red, freq, green, freq, blue, 0, True, True, True)
 
-    layers = image.layers
-    nlayers = len (layers)
-    drawable = pdb.gimp_image_get_active_layer (image)
-    if pdb.gimp_image_base_type (image) != 0:
-        pdb.gimp_image_convert_rgb (image)
-    i = 0
-    while i < nlayers:
-        r_angle = (i * 360 * loops)/nlayers
-        g_angle = r_angle + 180
-        b_angle = 360 - r_angle
-        pdb.plug_in_alienmap2 (image, layers [i],
-                               frequency, r_angle,
-                               frequency, g_angle,
-                               frequency, b_angle,
-                               0, True, True, True)
-        i += 1
-
-    if filename:
-        pdb.file_gif_save (image, drawable, filename, filename, 0, 1, 50, 0)
+def rainbowfy (image, loops, freq):
+    f = lambda i, l, r, g, b: alien (i, l, r, g, b, freq)
+    scale (image, f, (0, 360, int), (180, 540, int), (360, 0, int))
 
 register(
     "rainbowfy",
