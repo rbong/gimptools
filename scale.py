@@ -11,7 +11,7 @@ def wrap (func, img, layer, i, nlayers, arg):
     func (*((img, layer) + newarg))
 
 def get_image (img):
-    filename=None
+    filename = None
     if type (img) == type (str ()):
         filename = img
         img = pdb.gimp_file_load (filename, filename)

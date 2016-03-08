@@ -28,7 +28,7 @@ register(
         (PF_INT32, "nrg_func", "The energy function to use", 0),
     ],
     [],
-    liquify, menu="<Image>/Filters/Animation")
+    liquify, menu = "img/Filters/Animation")
 
 register(
     "batch-liquify",

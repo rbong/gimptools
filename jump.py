@@ -33,7 +33,7 @@ register(
         (PF_INT, "layer", "The layer number to jump to", 1),
     ],
     [],
-    jump, menu="<Image>/Layer")
+    jump, menu = "img/Layer")
 
 register(
     "jump-to-str",
@@ -49,6 +49,6 @@ register(
         (PF_STRING, "name", "The name of the layer to jump to", "Background"),
     ],
     [],
-    sjump, menu="<Image>/Layer")
+    sjump, menu = "img/Layer")
 
 main()

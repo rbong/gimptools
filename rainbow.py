@@ -24,7 +24,7 @@ register(
         (PF_FLOAT, "frequency", "The color frequency", 1.2),
     ],
     [],
-    rainbowfy, menu="<Image>/Filters/Animation")
+    rainbowfy, menu = "img/Filters/Animation")
 
 register(
     "batch-rainbowfy",

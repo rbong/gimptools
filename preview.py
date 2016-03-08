@@ -74,6 +74,6 @@ register(
         (PF_BOOL, "restore-hide", "Restore the hidden status after preview", 0),
     ],
     [],
-    preview, menu="<Image>/Filters/Animation")
+    preview, menu = "img/Filters/Animation")
 
 main()

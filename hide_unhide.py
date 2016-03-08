@@ -39,7 +39,7 @@ register(
         (PF_IMAGE, "image", "The image to modify", None),
     ],
     [],
-    hide_all_layers, menu="<Image>/Layer")
+    hide_all_layers, menu = "img/Layer")
 
 register(
     "unhide_all_layers",
@@ -54,7 +54,7 @@ register(
         (PF_IMAGE, "image", "The image to modify", None),
     ],
     [],
-    unhide_all_layers, menu="<Image>/Layer")
+    unhide_all_layers, menu = "img/Layer")
 
 register(
     "hide_range",
@@ -71,7 +71,7 @@ register(
         (PF_INT32, "end", "The end of the range", None),
     ],
     [],
-    hide_range, menu="<Image>/Layer")
+    hide_range, menu = "img/Layer")
 
 register(
     "unhide_range",
@@ -88,6 +88,6 @@ register(
         (PF_INT32, "end", "The end of the range", None),
     ],
     [],
-    unhide_range, menu="<Image>/Layer")
+    unhide_range, menu = "img/Layer")
 
 main ()
