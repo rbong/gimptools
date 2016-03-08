@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 from gimpfu import *
 
 def duplicate_all_layers (image, copies):

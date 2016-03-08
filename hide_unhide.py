@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 from gimpfu import *
 
 def hide_unhide (image, mode, start = 0, end = -1):
