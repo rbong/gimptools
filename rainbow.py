@@ -1,13 +1,13 @@
 from gimpfu import *
-from scale import *
+from gimptools import *
 
 def alien (img, layer, red, green, blue, freq):
-    pdb.plug_in_alienmap2 (
-        img, layer, freq, red, freq, green, freq, blue, 0, True, True, True)
+    pdb.plug_in_alienmap2 (img, layer,
+            freq, red, freq, green, freq, blue, 0, True, True, True)
 
 def rainbowfy (image, loops, freq):
     f = lambda i, l, r, g, b: alien (i, l, r, g, b, freq)
-    scale (image, f, (0, 360, int), (180, 540, int), (360, 0, int))
+    ramp (image, f, (0, 360, int), (180, 540, int), (360, 0, int))
 
 register(
     "rainbowfy",

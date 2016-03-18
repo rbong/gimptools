@@ -1,13 +1,13 @@
 from gimpfu import *
 
-def scale_at (arg, n, length):
+def ramp_sample (arg, n, length):
     start, end, cast = arg
     if None in (cast, end, n, length):
         return start
     return cast (start + (end - start) * n / float (length - 1))
 
-def wrap (func, img, layer, i, nlayers, arg):
-    newarg = tuple (scale_at (a, i, nlayers) for a in arg)
+def ramp_apply_at (func, img, layer, i, nlayers, arg):
+    newarg = tuple (ramp_sample (a, i, nlayers) for a in arg)
     func (*((img, layer) + newarg))
 
 def get_image (img):
@@ -17,8 +17,7 @@ def get_image (img):
         img = pdb.gimp_file_load (filename, filename)
     return img, filename
 
-
-def scale (img, func, *arg):
+def ramp (img, func, *arg):
     img, filename = get_image (img)
 
     layers = img.layers
@@ -29,7 +28,7 @@ def scale (img, func, *arg):
 
     i = 0
     while i < nlayers:
-        wrap (func, img, layers [i], i, nlayers, arg)
+        ramp_apply_at (func, img, layers [i], i, nlayers, arg)
         i += 1
 
     if filename:

@@ -1,5 +1,5 @@
 from gimpfu import *
-from scale import *
+from gimptools import *
 
 def lqr (image, layer, w, h, nrg_func):
     pdb.plug_in_lqr (image, layer, w, h, -1, -1, -1, -1, 0, -1, 1, 150, 1, 1,
@@ -11,7 +11,7 @@ def liquify (img, percent, nrg_func):
     w = pdb.gimp_image_width (_img)
     h = pdb.gimp_image_height (_img)
     _img = None
-    scale (img, f, (w * percent, w, round), (h * percent, h, round))
+    ramp (img, f, (w * percent, w, round), (h * percent, h, round))
 
 register(
     "liquify",
