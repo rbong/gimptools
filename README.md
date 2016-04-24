@@ -23,6 +23,15 @@ Cycles colors on a gif.
 
 Rainbowfy is found inside of Filters/Animation.
 
+There is also a batch-rainbowfy plugin intended for the command line. It can be
+applied to a gif with ./rainbow.sh in the following fashion-
+
+```
+./rainbow.sh $filename ($loops) ($frequency)
+```
+
+Loops default is 1, frequency default is 1.2
+
 ![rainbow.scm](https://raw.githubusercontent.com/rbong/gimptools/master/examples/tree.gif)
 
 ### liquid.py
@@ -30,6 +39,15 @@ Rainbowfy is found inside of Filters/Animation.
 Uses liquid rescale incrementally on a gif.
 
 Liquify is found inside of Filters/Animation.
+
+There is also a batch-liquify plugin intended for the command line. It can be
+applied to a gif with ./liquid.sh in the following fashion-
+
+```
+./liquid.sh $filename ($percent) ($nrg_func)
+```
+
+Percent default is 0.01, nrg\_func default is 0.
 
 ### preview.py
 
