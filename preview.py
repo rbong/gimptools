@@ -32,7 +32,7 @@ def preview (image, delay, loops, force_delay, ignore_hidden, restore_hide):
         while i > 0:
             i -= 1
             if (not ignore_hidden) or visible [i]:
-                pdb.gimp_item_set_visible (layers [i], 1)
+                pdb.gimp_item_set_visible (layers [i], True)
                 pdb.gimp_displays_flush ()
                 time.sleep (length [i])
         j += 1
@@ -41,7 +41,7 @@ def preview (image, delay, loops, force_delay, ignore_hidden, restore_hide):
         if j < loops:
             while i < nlayers:
                 if (not ignore_hidden) or visible [i]:
-                    pdb.gimp_item_set_visible (layers [i], 0)
+                    pdb.gimp_item_set_visible (layers [i], False)
                 i += 1
 
         else:
@@ -54,7 +54,7 @@ def preview (image, delay, loops, force_delay, ignore_hidden, restore_hide):
         while i > 0:
             i -= 1
             if visible [i]:
-                pdb.gimp_item_set_visible (layers [i], 1)
+                pdb.gimp_item_set_visible (layers [i], True)
 
 register(
     "preview",
