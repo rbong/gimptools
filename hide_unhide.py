@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from gimpfu import *
 
 def hide_unhide (image, mode, start = 0, end = -1):
@@ -39,7 +41,8 @@ register(
         (PF_IMAGE, "image", "The image to modify", None),
     ],
     [],
-    hide_all_layers, menu = "img/Layer")
+    hide_all_layers,
+    menu = "<Image>/Layer")
 
 register(
     "unhide_all_layers",
@@ -54,7 +57,7 @@ register(
         (PF_IMAGE, "image", "The image to modify", None),
     ],
     [],
-    unhide_all_layers, menu = "img/Layer")
+    unhide_all_layers, menu = "<Image>/Layer")
 
 register(
     "hide_range",

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from gimpfu import *
 
 def ramp_sample (arg, n, length):

@@ -7,7 +7,7 @@ from gimptools import *
 
 ## usage
 
-Move the .py files to your ~/.gimp\*/plug-ins/ directory, then invoke them with
+Move the .py files to your ~/.config/GIMP/*/plug-ins/ directory and remove ~/.config/GIMP/*/pluginrc, then invoke them with
 
 ```
 gimp -i -b '(command args)' -b '(gimp-quit 0)'

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from gimpfu import *
 import time
 import re
@@ -74,6 +76,7 @@ register(
         (PF_BOOL, "restore-hide", "Restore the hidden status after preview", 0),
     ],
     [],
-    preview, menu = "img/Filters/Animation")
+    preview,
+    menu = "<Image>/Filters/Animation")
 
 main()

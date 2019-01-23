@@ -1,9 +1,11 @@
+#!/usr/bin/env python
+
 from gimpfu import *
 from gimptools import *
 
 def alien (img, layer, red, green, blue, freq):
     pdb.plug_in_alienmap2 (img, layer,
-            freq, red, freq, green, freq, blue, 0, True, True, True)
+            freq, red % 360, freq, green % 360, freq, blue % 360, 0, True, True, True)
 
 def rainbowfy (image, loops, freq):
     f = lambda i, l, r, g, b: alien (i, l, r, g, b, freq)
@@ -16,7 +18,7 @@ register(
     "Roger Bongers",
     "Roger Bongers",
     "2016",
-    "Rainbowfy...",
+    "_Rainbowfy...",
     "*",
     [
         (PF_IMAGE, "image", "The image to modify", None),
@@ -24,7 +26,8 @@ register(
         (PF_FLOAT, "frequency", "The color frequency", 1.2),
     ],
     [],
-    rainbowfy, menu = "img/Filters/Animation")
+    rainbowfy,
+    menu = "<Image>/Filters/Animation")
 
 register(
     "batch-rainbowfy",

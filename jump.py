@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from gimpfu import *
 
 def jump (image, layer):
@@ -33,7 +35,8 @@ register(
         (PF_INT, "layer", "The layer number to jump to", 1),
     ],
     [],
-    jump, menu = "img/Layer")
+    jump,
+    menu = "<Image>/Layer")
 
 register(
     "jump-to-str",
@@ -49,6 +52,6 @@ register(
         (PF_STRING, "name", "The name of the layer to jump to", "Background"),
     ],
     [],
-    sjump, menu = "img/Layer")
+    sjump, menu = "<Image>/Layer")
 
 main()

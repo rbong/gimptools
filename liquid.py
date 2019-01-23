@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from gimpfu import *
 from gimptools import *
 
@@ -28,7 +30,8 @@ register(
         (PF_INT32, "nrg_func", "The energy function to use", 0),
     ],
     [],
-    liquify, menu = "img/Filters/Animation")
+    liquify,
+    menu = "<Image>/Filters/Animation")
 
 register(
     "batch-liquify",

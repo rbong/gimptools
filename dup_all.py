@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from gimpfu import *
 
 def duplicate_all_layers (img, copies):
@@ -35,7 +37,8 @@ register(
         (PF_INT32, "copies", "The number of times to copy each layer", 1),
     ],
     [],
-    duplicate_all_layers, menu = "<img>/Layer")
+    duplicate_all_layers,
+    menu = "<Image>/Layer")
 
 register(
     "batch-duplicate-all-layers",
