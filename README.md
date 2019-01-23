@@ -1,11 +1,11 @@
-#gimptools
+# gimptools
 
 Plugins I have found useful to write for gimp.
 ```
 from gimptools import *
 ```
 
-##usage
+## usage
 
 Move the .py files to your ~/.gimp\*/plug-ins/ directory, then invoke them with
 
@@ -15,7 +15,7 @@ gimp -i -b '(command args)' -b '(gimp-quit 0)'
 
 Or call them inside of gimp.
 
-##plug-ins
+## plug-ins
 
 ### rainbow.py
 
@@ -68,7 +68,7 @@ Duplicate all the layers in an image a certain number of times.
 
 Duplicate all Layers is found inside of the Layer/ menu.
 
-##utilities
+## utilities
 
 To use the utility functions provided by gimptools, simply include the
 following line at the top of any python plugin in the local plugin directory.
@@ -76,7 +76,7 @@ following line at the top of any python plugin in the local plugin directory.
 from gimptools import *
 ```
 
-###ramp
+### ramp
 
 The ramp utility allows you to make a gimp animation plugin from any existing
 gimp function.
