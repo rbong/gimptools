@@ -2,6 +2,7 @@
 filename=$1
 loops=${2:-1}
 frequency=${3:-1.2}
+cp "$filename" "$filename".bkp
 gimp -i \
   -b '(python-fu-batch-rainbowfy RUN-NONINTERACTIVE "'"$filename"'" '$loops' '$frequency')' \
   -b '(gimp-quit 0)'
