@@ -1,21 +1,21 @@
 # gimptools
 
 Plugins I have found useful to write for gimp.
+
+![rainbow.scm](https://raw.githubusercontent.com/rbong/gimptools/master/examples/tree.gif)
+
+## Dependencies
+
+  - Gimp 2.10
+
+## Installation
+
+```bash
+cp *.py ~/.config/GIMP/2.10/plug-ins/
+rm ~/.config/GIMP/2.10/pluginrc
 ```
-from gimptools import *
-```
 
-## usage
-
-Move the .py files to your ~/.config/GIMP/*/plug-ins/ directory and remove ~/.config/GIMP/*/pluginrc, then invoke them with
-
-```
-gimp -i -b '(command args)' -b '(gimp-quit 0)'
-```
-
-Or call them inside of gimp.
-
-## plug-ins
+## Plug-ins
 
 ### rainbow.py
 
@@ -26,13 +26,12 @@ Rainbowfy is found inside of Filters/Animation.
 There is also a batch-rainbowfy plugin intended for the command line. It can be
 applied to a gif with ./rainbow.sh in the following fashion-
 
-```
+```bash
 ./rainbow.sh $filename ($loops) ($frequency)
 ```
 
 Loops default is 1, frequency default is 1.2
 
-![rainbow.scm](https://raw.githubusercontent.com/rbong/gimptools/master/examples/tree.gif)
 
 ### liquid.py
 
@@ -43,7 +42,7 @@ Liquify is found inside of Filters/Animation.
 There is also a batch-liquify plugin intended for the command line. It can be
 applied to a gif with ./liquid.sh in the following fashion-
 
-```
+```bash
 ./liquid.sh $filename ($percent) ($nrg_func)
 ```
 
@@ -68,11 +67,12 @@ Duplicate all the layers in an image a certain number of times.
 
 Duplicate all Layers is found inside of the Layer/ menu.
 
-## utilities
+## Utilities
 
 To use the utility functions provided by gimptools, simply include the
 following line at the top of any python plugin in the local plugin directory.
-```
+
+```bash
 from gimptools import *
 ```
 
@@ -82,9 +82,11 @@ The ramp utility allows you to make a gimp animation plugin from any existing
 gimp function.
 
 The syntax is as follows:
-```
+
+```bash
 ramp (image name, function, ...)
 # variable argument list syntax
 (start value, end value, typecast)
 ```
+
 For examples, view liquid.py and rainbow.py
