@@ -74,7 +74,7 @@ register(
         (PF_INT32, "end", "The end of the range", None),
     ],
     [],
-    hide_range, menu = "img/Layer")
+    hide_range, menu = "<Image>/Layer")
 
 register(
     "unhide_range",
@@ -91,6 +91,6 @@ register(
         (PF_INT32, "end", "The end of the range", None),
     ],
     [],
-    unhide_range, menu = "img/Layer")
+    unhide_range, menu = "<Image>/Layer")
 
 main ()
