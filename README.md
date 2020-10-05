@@ -7,6 +7,7 @@ Plugins I have found useful to write for gimp.
 ## Dependencies
 
   - Gimp 2.10
+  - Gimp Python bindings
 
 ## Installation
 
