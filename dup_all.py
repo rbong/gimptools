@@ -26,7 +26,7 @@ def duplicate_all_layers (img, copies):
 register(
     "duplicate_all_layers",
     "duplicate_all_layers",
-    "Perform incremental liquid rescale on a gif",
+    "Duplicate all the layers in an image a certain number of times",
     "Roger Bongers",
     "Roger Bongers",
     "2016",
